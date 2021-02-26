@@ -25,12 +25,15 @@
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
+					<Add option="-lws2_32" />
+					<Add library="lib/WS2_32.LIB" />
 				</Linker>
 			</Target>
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="head/SERVER.h" />
 		<Unit filename="src/AcceptClient.c">
 			<Option compilerVar="CC" />
 		</Unit>
