@@ -1,0 +1,33 @@
+# depslib dependency file v1.0
+1614323245 source:c:\users\bescd\desktop\s\topserver\src\acceptclient.c
+	"../head/SERVER.h"
+
+1614323534 c:\users\bescd\desktop\s\topserver\head\server.h
+	<stdio.h>
+	<WinSock2.h>
+	<windows.h>
+	<conio.h>
+	<stdlib.h>
+	<string.h>
+	<pthread.h>
+	<direct.h>
+	<time.h>
+
+1614151128 source:c:\users\bescd\desktop\s\topserver\src\delete_outlineuser.c
+	"../head/SERVER.h"
+
+1614324188 source:c:\users\bescd\desktop\s\topserver\src\initserver.c
+	"../head/SERVER.h"
+
+1614324612 source:c:\users\bescd\desktop\s\topserver\src\main.c
+	"../head/SERVER.h"
+
+1614151128 source:c:\users\bescd\desktop\s\topserver\src\newonlineuser.c
+	"../head/SERVER.h"
+
+1614327834 source:c:\users\bescd\desktop\s\topserver\src\sendmsg2allconnectedserver.c
+	"../head/SERVER.h"
+
+1614326999 source:c:\users\bescd\desktop\s\topserver\src\startthread.c
+	"../head/SERVER.h"
+
