@@ -14,10 +14,12 @@ DWORD WINAPI SendMsg2AllServer(LPVOID b)
             delete_out_user(*a);
             break;
         }
-        printf("\n%d:%s",len,reccln);
+        printf("\nRecFrom %s: Len = %d\t|%s",inet_ntoa((a->ADDR.sin_addr)),len,reccln);
         Server = onlineUserHead->next;
         while(Server!=NULL)
         {
+            if((a->ADDR.sin_port==Server->USER_socket_udp.sin_port)&&!strcmp(inet_ntoa((a->ADDR.sin_addr)),inet_ntoa((Server->USER_socket_udp.sin_addr))))
+                continue;
             len=send(Server->USER_socket,reccln,721,0);
             if(len==SOCKET_ERROR)
             {
