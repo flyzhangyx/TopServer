@@ -19,7 +19,11 @@ DWORD WINAPI SendMsg2AllServer(LPVOID b)
         while(Server!=NULL)
         {
             if((a->ADDR.sin_port==Server->USER_socket_udp.sin_port)&&!strcmp(inet_ntoa((a->ADDR.sin_addr)),inet_ntoa((Server->USER_socket_udp.sin_addr))))
+            {
+                Server = Server->next;
                 continue;
+            }
+
             len=send(Server->USER_socket,reccln,721,0);
             if(len==SOCKET_ERROR)
             {
