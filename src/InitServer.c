@@ -60,49 +60,5 @@ int initServer()
     strcpy(onlineUserHead->DATE,"\0");
     onlineUserHead->OnlineUserNum=0;
     onlineUserHead->next=NULL;
-    /*loginfo=fopen("Loginfo.info","a+");
-    REGISTERlocal=fopen("REGISTEDUSER.txt","a+");
-    if(REGISTERlocal==NULL)
-    {
-        perror("本地已注册用户列表读取失败");
-        exit(-1);
-    }
-    else
-    {
-        do
-        {
-            RegistedUserHead=(struct OnlineUserHead *)malloc(sizeof(struct OnlineUserHead));///跟Online同样的方式储存
-        }
-        while(RegistedUserHead==NULL);
-        strcpy(RegistedUserHead->DATE,"\0");
-        RegistedUserHead->OnlineUserNum=0;
-        RegistedUserHead->next=NULL;
-        USER d=(USER)malloc(sizeof(struct user));
-        cln a;
-        while(!feof(REGISTERlocal) && fread(d,sizeof(struct user),1,REGISTERlocal))
-        {
-            strcpy(a.USERID,d->USERID);
-            strcpy(a.USERPASSWORD, d->USERPASSWORD);
-            a.ADDR=d->USER_socket_udp;
-            //a.remote_socket=d->USER_socket;
-            strcpy(a.info,d->info) ;
-            AddtoLocal(a);
-        }
-        free(d);
-        printf("本地注册库加载成功！");
-    }
-    FILE* updversion=fopen("update","r");
-    if(updversion)
-    {
-        fgets(app_version,4,updversion);
-        fclose(updversion);
-        app_version[3]='\0';
-        printf("APP版本-%s\n",app_version);
-    }
-    else
-    {
-        printf("更新文件读取失败!");
-        return -1;
-    }*/
     return 1;
 }

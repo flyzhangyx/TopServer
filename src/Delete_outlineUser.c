@@ -14,7 +14,6 @@ int delete_out_user(cln a)
             onlineUserHead->next=Tag->next;
             free(Tag);
             printf("\n已从在线列表中删除该用户%s\n",a.USERID);
-            //cln_num--;
             return 1;
         }
         else
@@ -26,7 +25,6 @@ int delete_out_user(cln a)
                     Tag->next=Tag->next->next;
                     free(Tag->next);
                     printf("\n已从在线列表中删除该用户%s\n",a.USERID);
-                    //cln_num--;
                     return 1;
                 }
                 else

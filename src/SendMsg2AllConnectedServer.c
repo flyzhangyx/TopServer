@@ -1,4 +1,5 @@
 #include"../head/SERVER.h"
+extern pthread_mutex_t t;
 DWORD WINAPI SendMsg2AllServer(LPVOID b)
 {
     cln* a=(cln*)b;
@@ -9,35 +10,40 @@ DWORD WINAPI SendMsg2AllServer(LPVOID b)
     {
         memset(reccln,0,721);
         len=recv(a->remote_socket,reccln,721,0);
+        pthread_mutex_lock(&t);
         if(len<=0)
         {
             delete_out_user(*a);
-            break;
+            pthread_mutex_unlock(&t);
+            free(a);
+            return 0;
         }
         printf("\nRecFrom %s: Len = %d\t|%s",inet_ntoa((a->ADDR.sin_addr)),len,reccln);
         Server = onlineUserHead->next;
         while(Server!=NULL)
         {
+            printf("(*-*)");
             if((a->ADDR.sin_port==Server->USER_socket_udp.sin_port)&&!strcmp(inet_ntoa((a->ADDR.sin_addr)),inet_ntoa((Server->USER_socket_udp.sin_addr))))
             {
                 Server = Server->next;
                 continue;
             }
-
             len=send(Server->USER_socket,reccln,721,0);
             if(len==SOCKET_ERROR)
             {
-                USER temp = Server;
+                USER tmp = Server;
                 Server = Server ->next;
-                cln tempcln;
-                sprintf(tempcln.USERID,"%s",temp->USERID);
-                delete_out_user(tempcln);
+                cln tmpcln;
+                sprintf(tmpcln.USERID,"%s",tmp->USERID);
+                delete_out_user(tmpcln);
             }
             else
             {
                 Server = Server ->next;
             }
         }
+        pthread_mutex_unlock(&t);
+        printf("\n");
     }
     return 0;
 }
