@@ -19,6 +19,11 @@ DWORD WINAPI SendMsg2AllServer(LPVOID b)
             return 0;
         }
         printf("\nRecFrom %s: Len = %d\t|%s",inet_ntoa((a->ADDR.sin_addr)),len,reccln);
+        if(reccln[0]=='H'&&reccln[1]=='B'&&reccln[2]=='A')
+        {
+            pthread_mutex_unlock(&t);
+            continue;
+        }
         Server = onlineUserHead->next;
         while(Server!=NULL)
         {
